@@ -1,0 +1,13 @@
+.container {
+  max-width: 600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0px 15px;
+}
+.container > header {
+  padding: 20px 0px;
+}
+.container > header > a {
+  font-size: 20px;
+  color: rgb(229, 9, 20);
+}
