@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container > section h3 {
+  padding: 10px;
+  margin-bottom: 0px;
+}
+
+.recommended_movies {
+  display: flex;
+  gap: 5px;
+}
+
+.all_movies {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: flex-start; */
+  gap: 5px;
+}
+
+.all_movies > div {
+  width: 19.5%;
+}
