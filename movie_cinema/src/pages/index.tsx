@@ -11,7 +11,7 @@ export default function Home() {
         <h3>지금 가장 추천하는 영화</h3>
         <div className={style.recommended_movies}>
           {movies.map((movie, idx): ReactNode | null => {
-            return idx < 3 ? <MovieItem key={movie.id} {...movie} /> : null;
+            return idx < 3 ? <MovieItem key={idx + 1} {...movie} /> : null;
           })}
         </div>
       </section>
@@ -19,7 +19,7 @@ export default function Home() {
         <h3>등록된 모든 영화</h3>
         <div className={style.all_movies}>
           {movies.map((movie, idx): ReactNode => {
-            return <MovieItem key={movie.id} {...movie} />;
+            return <MovieItem key={idx + 1} {...movie} />;
           })}
         </div>
       </section>
