@@ -1,14 +1,27 @@
-import { useRouter } from "next/router";
-import movies from "@/mocks/movies.json";
 import style from "@/pages/movie/[id].module.css";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import fetchOneMovie from "@/lib/fetch-one-movie";
 
-export default function Page() {
-  const router = useRouter();
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const id = context.params!.id;
 
-  const { id } = router.query;
+  const movie = await fetchOneMovie(Number(id));
 
-  const movie = movies.filter((item) => String(item.id) === id)[0];
+  return {
+    props: {
+      movie,
+    },
+  };
+};
 
+export default function Page({
+  movie,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  if (movie === null) {
+    return "문제가 발생하였습니다. 다시 시도 해주세요";
+  }
   return (
     <div className={style.container}>
       <div
