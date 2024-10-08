@@ -2,13 +2,9 @@ import SearchableLayout from "@/components/searchable-layout";
 import React, { ReactNode, useEffect, useState } from "react";
 import MovieItem from "@/components/movie-item";
 import fetchMovies from "@/lib/fetch-movies";
-import {
-  GetServerSidePropsContext,
-  InferGetServerSidePropsType,
-  InferGetStaticPropsType,
-} from "next";
 import { useRouter } from "next/router";
 import { MovieData } from "@/types";
+import Head from "next/head";
 
 export default function Page() {
   const [movies, setMovies] = useState<MovieData[]>([]);
@@ -31,6 +27,15 @@ export default function Page() {
 
   return (
     <div>
+      <Head>
+        <title>한입씨네마 - 검색결과</title>
+        <meta property="og:title" content="한입씨네마 - 검색결과" />
+        <meta property="og:image" content="/thumbnail.png" />
+        <meta
+          property="og:description"
+          content="한입씨네마에 등록된 영화들을 만나보세요."
+        />
+      </Head>
       {movies ? (
         movies.map((movie, idx) => <MovieItem key={movie.id} {...movie} />)
       ) : (
